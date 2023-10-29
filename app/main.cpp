@@ -9,10 +9,14 @@ static ifont *font;
 static int y_log;
 static bool debug = false;
 static const int kFontSize = 12;
+static const int PICTURE_DISPLAY_TIME = 10;  // 1200 - 20 mins
 static const char *PICTURE_DIR = "/mnt/ext1/My pictures/PocketFrame/";
 
 static void log_message(const char *msg) {
-    if (strlen(msg) == 0 || debug) {
+    if (!debug) {
+        return;
+    }
+    if (strlen(msg) == 0) {
         return;
     }
     DrawTextRect(0, y_log, ScreenWidth(), kFontSize, msg, ALIGN_LEFT);
@@ -68,8 +72,7 @@ static int main_handler(int event_type, int param_one, int param_two) {
                 if (are_we_sleeping) {
                     // Copy buffer to the real screen
                     FullUpdate();
-                    // sleep(1200); // 20 mins
-                    sleep(10);
+                    sleep(PICTURE_DISPLAY_TIME);
                 }
             }
             closedir(dir);
