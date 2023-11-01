@@ -9,7 +9,7 @@ static ifont *font;
 static int y_log;
 static bool debug = false;
 static const int kFontSize = 12;
-static const int PICTURE_DISPLAY_TIME = 10;  // 1200 - 20 mins
+static const int PICTURE_DISPLAY_TIME = 7200;  // 2 hours
 static const char *PICTURE_DIR = "/mnt/ext1/My pictures/PocketFrame/";
 
 static void log_message(const char *msg) {
